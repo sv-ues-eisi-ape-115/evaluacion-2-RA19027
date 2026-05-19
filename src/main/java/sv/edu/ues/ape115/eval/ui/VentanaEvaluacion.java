@@ -89,7 +89,27 @@ public class VentanaEvaluacion extends JFrame {
         // TODO: implementar
         // Hint: new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 6))
         //       setBorder(new LineBorder(COLOR_PRIMARIO, 2))
-        return new JPanel(); // reemplazar con la implementación correcta
+    JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 6));
+
+    panel.setBorder(new LineBorder(COLOR_PRIMARIO, 2));
+
+    JLabel lblTitulo = new JLabel("Sistema de Registro — APE 115");
+    lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 16));
+    lblTitulo.setForeground(COLOR_PRIMARIO);
+
+    JLabel lblSubtitulo = new JLabel("Evaluación: Layout Managers y Bordes");
+    lblSubtitulo.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+    lblSubtitulo.setForeground(COLOR_NEUTRO);
+
+    panel.add(lblTitulo);
+    panel.add(Box.createHorizontalStrut(20));
+    panel.add(lblSubtitulo);
+
+    return panel;
+        
+   
+
+// reemplazar con la implementación correcta
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -120,7 +140,61 @@ public class VentanaEvaluacion extends JFrame {
      */
     JPanel ejercicio2_West() {
         // TODO: implementar
-        return new JPanel(); // reemplazar
+        //JPanel panel = new JPanel(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    JPanel panel = new JPanel();
+    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    panel.setPreferredSize(new Dimension(170, 0));
+
+    TitledBorder titulo = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED),"Módulos");
+
+    titulo.setTitleFont(new Font("Segoe UI", Font.BOLD, 11));
+    titulo.setTitleColor(COLOR_PRIMARIO);
+
+    CompoundBorder borde = BorderFactory.createCompoundBorder(titulo,BorderFactory.createEmptyBorder(6, 8, 6, 8));
+
+    panel.setBorder(borde);
+
+    JButton btnRegistros = crearBotonMenu("📋 Registros", COLOR_PRIMARIO);
+    JButton btnEmpleados = crearBotonMenu("👤 Empleados", COLOR_PRIMARIO);
+    JButton btnInventario = crearBotonMenu("📦 Inventario", COLOR_PRIMARIO);
+    JButton btnReportes = crearBotonMenu("📊 Reportes", COLOR_PRIMARIO);
+    JButton btnConfiguracion = crearBotonMenu("⚙ Configuración", COLOR_NEUTRO);
+
+    JButton[] botones = {
+            btnRegistros,
+            btnEmpleados,
+            btnInventario,
+            btnReportes,
+            btnConfiguracion
+    };
+
+    for (JButton boton : botones) {
+        boton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        boton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 36));
+    }
+
+    panel.add(btnRegistros);
+    panel.add(Box.createVerticalStrut(4));
+
+    panel.add(btnEmpleados);
+    panel.add(Box.createVerticalStrut(4));
+
+    panel.add(btnInventario);
+    panel.add(Box.createVerticalStrut(4));
+
+    panel.add(btnReportes);
+
+
+    panel.add(Box.createVerticalGlue());
+
+    panel.add(Box.createVerticalStrut(4));
+    panel.add(btnConfiguracion);
+
+    return panel;
+        
+        
+        
+     // reemplazar
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -145,7 +219,31 @@ public class VentanaEvaluacion extends JFrame {
         // Hint: splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
         //                                 ejercicio4_FormularioGBL(),
         //                                 ejercicio5_TabbedPane());
-        return new JPanel(); // reemplazar
+    
+
+    JPanel panelIzq = new JPanel();
+    JLabel lblIzq = new JLabel("Panel izquierdo");
+    lblIzq.setAlignmentX(CENTER_ALIGNMENT);
+    lblIzq.setAlignmentY(CENTER_ALIGNMENT);
+    panelIzq.add(lblIzq);
+
+
+    JPanel panelDer = new JPanel();
+    JLabel lblDer = new JLabel("Panel derecho");
+    lblDer.setAlignmentX(CENTER_ALIGNMENT);
+    lblDer.setAlignmentY(CENTER_ALIGNMENT);
+    panelDer.add(lblDer);
+
+    splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                                         panelIzq,
+                                         panelDer);
+
+    // Configuración requerida
+    this.splitPane.setDividerLocation(380);
+    this.splitPane.setResizeWeight(0.45);
+    this.splitPane.setOneTouchExpandable(true);
+
+    return splitPane; // reemplazar
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -195,6 +293,7 @@ public class VentanaEvaluacion extends JFrame {
 
     JPanel ejercicio4_FormularioGBL() {
         // TODO: implementar
+        
         return new JPanel(); // reemplazar
     }
 
